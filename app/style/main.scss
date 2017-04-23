@@ -1,0 +1,118 @@
+/* app css stylesheet */
+
+$border_color : blue;
+$height: 25px;
+$border: 3px solid blue;
+$border-radius:50px;
+$input_left:100;
+$input_right:100;
+$width: 250px;
+$popup_height: 320px;
+.input {
+  padding:7px;
+  display:inline;
+  background: none;
+  border:none;
+  border-radius: $border-radius;
+  height: $height;
+  color: dimgray;
+  font-family: "Gill Sans Extrabold", Helvetica, sans-serif;
+  font-weight: 300;
+  font-style:normal;
+  text-shadow: #fff 0 0 160px;
+}
+
+.input_changed{
+  background: greenyellow;
+  border:$border;
+  border-radius: $border-radius;
+  height: $height;
+  font-family:Arial;
+  font-style:normal;
+  font-size:12pt;
+}
+.popup_none {
+  display:none
+}
+.popup {
+  display:block;
+  width:$width;
+  height:$popup_height;
+  opacity:0.5;
+  box-shadow: 0 0 10px rgba(0,0,0,0.5);
+  .time_div {
+    padding:13px;
+    width:90%;
+    height:12%;
+    display: block;
+    background-color: #DCDCDC;
+  }
+  .input_date{
+    display:inline;
+    background: cornsilk;
+    border:none;
+    height: $height+5;
+    width:$width - 140;
+    font-family:"Times New Roman";
+    padding:5px;
+  }
+  .input_time {
+    @extend .input_date;
+    width:$width - 180;
+    float:right;
+  }
+    .t_popup {
+      width:$width - 20;
+      height:$popup_height -100;
+      padding: 7px;
+    }
+}
+.panel {
+  display:inline;
+  width:70px;
+  height:70px;
+  //box-shadow: 0 0 10px rgba(0,0,0,0.5);
+  border:3px solid #DCDCDC;
+}
+.panel-line {
+  display:inline-block;
+  width:30px;
+  line-height:30px;
+  text-align: center;
+  //box-shadow: 0 0 10px rgba(0,0,0,0.5);
+  border:0.5px ridge #DCDCDC;
+  cursor: pointer;
+}
+.panel-week {
+  @extend  .panel-line;
+  border: none;
+  padding:0.7px;
+}
+.panel-highlighted {
+  @extend  .panel-line;
+  background-color: aquamarine;
+}
+.panel-chosen {
+  @extend  .panel-line;
+  background-color: greenyellow;
+}
+.label {
+  padding:5px;
+  text-align: center;
+}
+.divfortext {
+ text-align: center;
+  padding: 5px;
+}
+.stroke {
+  color: dimgray;
+  font-size: 8pt;
+  text-decoration: underline;
+  cursor: pointer;
+}
+.img_h {
+  background: paleturquoise;
+  z-index: 1;
+  background-blend-mode: multiply;
+  cursor: pointer;
+}

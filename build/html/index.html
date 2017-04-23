@@ -1,0 +1,50 @@
+<div ng-controller="dateCtrl">
+    <input type="text" class="input"
+           placeholder="place Date"
+           ng-focus="isClicked=true"
+           ng-value="DateObj.FullDate"
+           is-editing
+           is-clicked="isClicked"
+    />
+    <div ng-class="{'popup_none':isClicked==false,'popup':isClicked==true}"
+         ng-mouseenter="selectedIndex=-1"
+         ng-init="setDate(DateObj)"
+    >
+      <div class="time_div">
+        <input type="text" class="input_date" ng-model="DateObj.FullDate"/>
+        <input type="text" class="input_time" ng-model="DateObj.Time"/>
+      </div>
+        <div class="divfortext">
+            <img ng-class = "{'img_h':selectedLeftTag,'':!selectedLeftTag}"
+                 width="30" height="30"
+                 src="../img/prev.png"
+                 align="left"
+                 ng-mouseenter="selectLeftTag()"
+                 ng-mouseleave="selectedLeftTag=false"
+                 ng-click = "DateObj=goacrossDate(Months,'prev',DateObj)"
+            >
+            <span class="label">{{DateObj.MonthName}}  {{DateObj.Year}}</span>
+            <img ng-class = "{'img_h':selectedRightTag,'':!selectedRightTag}"
+                 width="30" height="30"
+                 src="../img/next.png"
+                 align="right"
+                 ng-mouseenter="selectRightTag()"
+                 ng-mouseleave="selectedRightTag=false"
+                 ng-click = "DateObj=goacrossDate(Months,'next',DateObj)"
+            >
+        </div>
+      <div class="t_popup" ng-mouseleave="selectedIndex=-1">
+        <span class="panel-week" ng-repeat="weeks in Week">{{weeks}}</span>
+      <span ng-class="{'panel-line':$index!=selectedIndex,'panel-highlighted':$index==selectedIndex,
+            'panel-chosen':$index===isChosen}"
+            ng-repeat="day in Days"
+            ng-mouseenter="panelCheck($index)"
+            ng-click="choose($index,Days[$index].value,DateObj)"
+      >
+      {{day.value}}
+      </span>
+      </div>
+        <span class="stroke" ng-click="isClicked=false">Отменить</span>
+        <img src="../img/ok.png" align="right" width="25" height="25" ng-click="isClicked=false">
+    </div>
+</div>
